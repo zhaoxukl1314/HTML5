@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript" language="jscript" >
+				function initLocation() {
+					// We are already defined. Hooray!
+					if (window.google && google.gears) {
+						return;
+					}
+
+					var factory = null;
+
+					// Firefox
+					if (typeof GearsFactory != 'undefined') {
+						factory = new GearsFactory();
+					} else {
+						// IE
+						try {
+						  factory = new ActiveXObject('Gears.Factory');
+						  // privateSetGlobalObject is only required and supported on IE Mobile on
+						  // WinCE.
+						  if (factory.getBuildInfo().indexOf('ie_mobile') != -1) {
+							factory.privateSetGlobalObject(this);
+						  }
+						} catch (e) {
+						  // Safari
+						  if ((typeof navigator.mimeTypes != 'undefined') && navigator.mimeTypes["application/x-googlegears"]) {
+							factory = document.createElement("object");
+							factory.style.display = "none";
+							factory.width = 0;
+							factory.height = 0;
+							factory.type = "application/x-googlegears";
+							document.documentElement.appendChild(factory);
+							if(factory && (typeof factory.create == 'undefined')) {
+							  // If NP_Initialize() returns an error, factory will still be created.
+							  // We need to make sure this case doesn't cause Gears to appear to
+							  // have been initialized.
+							  factory = null;
+							}
+						  }
+						}
+					}
+
+					// *Do not* define any objects if Gears is not installed. This mimics the
+					// behavior of Gears defining the objects in the future.
+					if (!factory) {
+						return;
+					}
+
+					// Now set up the objects, being careful not to overwrite anything.
+					//
+					// Note: In Internet Explorer for Windows Mobile, you can't add properties to
+					// the window object. However, global objects are automatically added as
+					// properties of the window object in all browsers.
+					if (!window.google) {
+						google = {};
+					}
+
+					if (!google.gears) {
+						google.gears = {factory: factory};
+					}
+				};
+				
+				function getGeoLocation(okCallback,errorCallback){
+					initLocation();
+					try {
+						if(navigator.geolocation) {
+							geo = navigator.geolocation;
+						} else {
+							geo = google.gears.factory.create('beta.geolocation');
+						}
+					}catch(e){}
+
+					if (geo) {
+						//watch会触发多次，以便随时监控ip改变，iphone在开始会调用两次，屏幕旋转和解锁也会调用，汗。。。
+						//navigator.geolocation.watchPosition(successCallback, errorCallback, options);
+						geo.getCurrentPosition(okCallback , errorCallback);
+					} else {
+						alert("不好意思，你不让我定位！");
+					}
+				
+				}
+				
+
+				function okCallback(d){
+					alert('当前位置(纬度，经度): ' + d.latitude + ',' + d.longitude);
+					//iphone
+					if(d.coords)
+						alert('当前位置(纬度，经度): ' + d.coords.latitude + ',' + d.coords.longitude);
+					if(d.gearsAddress)
+						alert(d.gearsAddress.city);
+
+				};
+				function errorCallback(err){
+				  alert(err.message);
+				};
+</script>
+</head>
+
+<body>
+		获取当前的定位信息
+		<input onclick="getGeoLocation(okCallback,errorCallback)" type="button" value="获取">
+</body>
+</html>

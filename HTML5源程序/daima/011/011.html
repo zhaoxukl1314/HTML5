@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>使用<menu>元素</title>
+</head>
+<body>
+<div style='display:inline' contextmenu="mymenu">右击我试试</div>
+
+<menu type="context" id="mymenu">
+  <menuitem label="菜单1" onclick="alert('这是菜单1');" icon="1.png"></menuitem>
+  <menuitem label="菜单2" onclick="alert('这是菜单2');" icon="2.png"></menuitem>
+  <menu label="菜单3">
+    <menuitem label="菜单3-1" icon="3.png" onclick="alert('这是菜单3-1');">
+    </menuitem>
+    <menu label="菜单3-2" >  
+       <menuitem label="菜单3-2-1" icon="123.png" onclick="alert('这是菜单3-2-1');">
+       </menuitem>
+    </menu>
+  </menu>
+</menu>
+</body>
+</html>
+

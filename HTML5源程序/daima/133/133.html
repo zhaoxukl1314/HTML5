@@ -1,0 +1,67 @@
+    <!DOCTYPE HTML>
+    <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+            <title>Canvas坐标变换与路径结合使用实验</title>
+            <script type="text/javascript">
+            window.onload = function()
+            {
+                createPic();
+            }
+                    //创建图形
+                    function createPic()
+                    {
+                            var canvas = document.getElementById("canvas");
+                            var context = canvas.getContext("2d");
+                            context.fillStyle = "#d4d4d4";
+                            context.fillRect(0, 0, 400, 300);
+                            //绘制图形
+                            context.translate(200, 50);
+                            for(var i = 0; i < 50; i++)
+                            {
+                                    context.translate(25, 25);
+                                    context.scale(0.95, 0.95);
+                                    context.rotate(Math.PI / 8);
+                                    createStar(context);//此方法专门绘制五角星
+                                    context.fill();
+                            }
+                    }
+                    //创建五角星的方法
+                    function createStar(c)
+                    {
+                            var n = 0;
+                            var dx = 100;
+                            var dy = 0;
+                            var s = 50;
+                            var x = Math.sin(0);
+                            var y = Math.cos(0);
+                            var dig = Math.PI / 5 * 4;
+                            //创建路径
+                            c.beginPath();
+                            c.fillStyle = toRGB(parseInt(Math.random()*(255 - 0 + 1) + 0),parseInt(Math.random()*(255 - 0 + 1) + 0),parseInt(Math.random()*(255 - 0 + 1) + 0));
+                            for(var i = 0; i < 5; i++)
+                            {
+                                    x = Math.sin(i * dig);
+                                    y = Math.cos(i * dig);
+                                    c.lineTo(dx + x * s, dy + y * s);
+                            }
+                            c.closePath();
+                    }
+                    //小于10补零
+                    function addZero(string){return string.length == 2 ? string : '0' + string;}
+                    //随即颜色
+                    function toRGB(redValue, greenValue, blueValue)
+                    {
+                            var
+                                    rgbR = addZero(redValue.toString(16), 2),
+                                    rgbG = addZero(greenValue.toString(16), 2),
+                                    rgbB = addZero(blueValue.toString(16), 2);
+                            var rgb = "#" + rgbR + rgbG + rgbB;
+                            return rgb;
+                    }
+            </script>
+        </head>
+        <body>
+                <canvas id="canvas" width="400" height="300"></canvas>
+        </body>
+    </html>

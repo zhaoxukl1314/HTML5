@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>展示触发事件的顺序</title>
+<link href="css.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="jscript" 
+        src="js073.js"/>
+</script>
+</head>
+<body>
+<form id="frmTmp">
+ <fieldset>
+   <legend>演示文件读取事件的顺序</legend>
+   <input type="file" name="fleUpload" id="fleUpload" 
+          onChange="fileUpload_ShowEvent(this.files);"/>
+          <p id="pStatus"></p>
+ </fieldset>
+</form>
+</body>
+</html>

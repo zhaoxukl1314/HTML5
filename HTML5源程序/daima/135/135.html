@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+        <title>HTML5每日一练之Canvas标签的应用-绘制线性渐变图形</title>
+                <script type="text/javascript">
+        window.onload = function()
+        {
+                        var canvas = document.getElementById("W3Cfuns_canvas");
+                        var context = canvas.getContext("2d");
+                        var g1 = context.createLinearGradient(0, 0, 0, 300);
+                        g1.addColorStop(0, "rgb(255, 255, 0)");
+                        g1.addColorStop(1, "rgb(0, 255, 255)");
+                        context.fillStyle = g1;
+                        context.fillRect(0, 0, 400, 300);
+                        var n = 0;
+                        var g2 = context.createLinearGradient(0, 0, 300, 0);
+                        g2.addColorStop(0, "rgba(0, 0, 255, 0.5)");
+                        g2.addColorStop(1, "rgba(0, 255, 0, 0.5)");
+                        for(var i = 0; i < 10; i++)
+                        {
+                                context.beginPath();
+                                context.fillStyle = g2;
+                                context.arc(i * 25, i * 25, i * 10, 0, Math.PI * 2, true);
+                                context.closePath();
+                                context.fill();
+                        }
+                }
+        </script>
+    </head>
+
+    <body>
+            <canvas id="W3Cfuns_canvas" width="600" height="400"></canvas>
+    </body>
+</html>

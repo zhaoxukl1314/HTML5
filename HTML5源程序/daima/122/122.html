@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Canvas Primer - Example: Drawing shadows</title>
+    <script type="text/javascript">
+        window.addEventListener('load', function () {
+                //得到canvas，并检测是否支持canvas
+          var elem = document.getElementById('myCanvas');
+          if (!elem || !elem.getContext) {
+                return;
+          }
+ 
+          // 得到可以画图的上下文context
+          var context = elem.getContext('2d');
+          if (!context) {
+                return;
+          }
+ 
+          // 分别设置阴影的偏移坐标，阴影的虚化程度，阴影的颜色，图形的填充颜色，以及绘制图形。
+          context.shadowOffsetX = 10;
+          context.shadowOffsetY = 10;
+          context.shadowBlur    = 4;
+          context.shadowColor   = 'red';
+          context.fillStyle     = '#00f';
+          context.fillRect(20, 20, 150, 100);
+        }, false);
+        </script>
+          </head>
+        <body>
+    <p><canvas id="myCanvas" width="300" height="150">Your browser does not have 
+    support for Canvas. </canvas></p>
+  </body>
+</html>

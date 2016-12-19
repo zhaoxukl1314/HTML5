@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>获取上传文件的类型和大小</title>
+<link href="css.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="jscript" 
+        src="js068.js"/>
+</script>
+</head>
+<body>
+<form id="frmTmp">
+ <fieldset>
+   <legend>可以同时上传多个文件：</legend>
+   <input type="file" name="fleUpload" id="fleUpload" 
+          onChange="fileUpload_GetFileList(this.files);" 
+          multiple="true"/>
+   <ul id="ulUpload"></ul>
+ </fieldset>
+</form>
+</body>
+</html>

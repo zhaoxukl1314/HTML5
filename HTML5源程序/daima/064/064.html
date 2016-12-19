@@ -1,0 +1,50 @@
+﻿<html>
+<head>
+<title>检查多选框选择个数的特效</title>
+</head>
+<body>
+<title></title>
+<style type="text/css">
+.searchinput{
+	border-right-width: 0px;
+	padding-left: 3px;
+	width: 168px;
+	font-family: arial;
+	float: left;
+	border-top-width: 0px;
+	border-bottom-width: 0px;
+	color: #636365;
+	margin-left: 4px;
+	font-size: 8pt;
+	vertical-align: middle;
+	border-left-width: 0px;
+	margin-right: 3px;
+}
+.tab_search{
+	border-bottom: #cccccc 1px solid;
+	border-left: #cccccc 1px solid;
+	height: 25px;
+	border-top: #cccccc 1px solid;
+	border-right: #cccccc 1px solid;
+
+}
+.searchaction{
+	width: 21px;
+	float: left;
+	height: 17px;
+}
+</style>
+<form action="#" name="search">
+<table border="0" cellpadding="0" cellspacing="0" class="tab_search">
+	<tr>
+		<td>
+			<input type="text" name="q" title="Search" class="searchinput" id="searchinput" onkeydown="if (event.keyCode==13) {}" onblur="if(this.value=='')value='- Search Products -';" onfocus="if(this.value=='- Search Products -')value='';" value="- Search Products -" size="10"/>
+		</td>
+		<td>
+			<input type="image" width="21" height="17" class="searchaction" onclick="if(document.forms['search'].searchinput.value=='- Search Products -')document.forms['search'].searchinput.value='';" alt="Search" src="http://www.codefans.net/jscss/demoimg/201112/magglass.gif" border="0" hspace="2"/>
+		</td>
+	</tr>
+</table>
+</form>
+</body>
+</html>

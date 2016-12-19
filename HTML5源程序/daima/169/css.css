@@ -1,0 +1,55 @@
+﻿@charset "utf-8";
+/* CSS Document */
+body {
+	font-size:12px
+}
+.inputbtn {
+	border:solid 1px #ccc;
+	background-color:#eee;
+	line-height:18px;
+	font-size:12px	
+}
+.inputtxt {
+	border:solid 1px #ccc;
+	line-height:18px;
+	font-size:12px;
+	padding-left:3px
+}
+fieldset{
+	padding:10px;
+	width:285px;
+	float:left
+}
+#pStatus{
+	display:none;
+	border:1px #ccc solid; 
+	width:248px; 
+	background-color:#eee;
+	padding:6px 12px 6px 12px;
+	margin-left:2px
+}
+textarea{
+	border:solid 1px #ccc;
+	padding:3px;
+	text-align:left;
+	font-size:10px
+}
+.w176{
+	width:176px
+	}
+.w85{
+	width:85px
+}
+.pl140{
+	padding-left:135px
+}
+.pl2{
+	padding-left:2px
+}
+.ml4{
+	margin-left:4px
+}
+#divMap{
+	height:260px;
+	width:560px;
+}

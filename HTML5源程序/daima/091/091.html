@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>显示播放状态</title>
+<link href="css.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="jscript" 
+        src="js091.js"/>
+</script>
+</head>
+<body>
+<div>
+  <video id="vdoMain" src="123.ogg"
+         width="360px" height="220px" controls="true" 
+         onMouseOut="v_move(0)" onMouseOver="v_move(1)"
+         onPlaying="v_palying()" onPause="v_pause()"
+         onLoadStart="v_loadstart();"
+         onEnded="v_ended();"
+         poster="123.jpg">
+         你的浏览器不支持视频
+  </video>
+  <p id="pTip">
+     <span id="spnPlayTip" class="spnL">播放完成</span>
+  </p>
+<div>
+</body>
+</html>

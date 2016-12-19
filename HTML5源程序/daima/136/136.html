@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+        <title>HTML5每日一练之Canvas标签的应用-绘制复杂图形</title>
+        <script type="text/javascript">
+                        window.onload = function()
+                        {
+
+                                var canvas = document.getElementById("W3Cfuns_canvas");
+                                var context = canvas.getContext("2d");//取得图形上下文 graphics context
+                                var dx = 150;//x坐标
+                                var dy = 150;//y坐标
+                                var s = 100;//图案半径
+                                //圆角外侧的钉
+                                var dig = Math.PI / 15 * 11;
+                                context.fillStyle = "#eee";//填充canvas的背景颜色
+                                context.fillRect(0, 0, 600, 400);//参数分别表示 x轴,y轴,宽度,高度
+                                context.beginPath();//创建路径
+                                context.fillStyle = "rgb(100, 255, 255)";//填充颜色 也可以使用 #900十六进制颜色
+                                context.strokeStyle = "rgb(0, 0, 100)";//线条颜色 也可以使用 #900十六进制颜色
+                                for(var i = 0; i < 30; i++)
+                                {
+                                        var x = Math.sin(i * dig);//计算钉的位置x坐标
+                                        var y = Math.cos(i * dig);//计算钉的位置y坐标
+                                        context.lineTo(dx + x * s, dy + y * s);//画出x - y的图案
+                                }
+                                context.closePath();//关闭路径
+                                context.fill();//填充颜色
+                                context.stroke();//填充线条
+                        }
+        </script>
+    </head>
+
+    <body>
+            <canvas id="W3Cfuns_canvas" width="600" height="400"></canvas>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>插入记录</title>
+<link href="css.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="jscript" 
+        src="js146.js"/>
+</script>
+</head>
+<body onLoad="Init_Data();">
+   <p id="pStatus"></p>
+   <fieldset>
+      <legend>新增学生资料</legend>
+      <span class="spanl">
+      学号：<input type="text" readonly="true" id="txtStuID" 
+                  class="inputtxt" size="10"><br>
+      姓名：<input type="text" id="txtName" class="inputtxt" 
+                  size="15">
+      </span>
+      <span class="spanr">
+      性别：<select id="selSex">
+              <option value="男">男</option>
+              <option value="女">女</option>
+            </select><br> 
+      总分：<input type="text" id="txtScore" class="inputtxt" 
+                  size="8">
+      </span>
+      <p class="btn">  
+      <input id="btnAdd" type="button" value="提交" 
+             class="inputbtn" onClick="btnAdd_Click();">
+      </p>
+    </fieldset>
+</body>
+</html>

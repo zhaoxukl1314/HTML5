@@ -1,0 +1,47 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>长命锁</title>
+<style>
+#myCanvas{
+	width:800px;
+	height:800px;
+}
+</style>
+</head>
+<body>
+<canvas id="myCanvas"></canvas>
+<script>
+var canvas=document.getElementById('myCanvas');
+var ctx = canvas.getContext("2d");
+ctx.strokeStyle = "blue";
+ctx.lineWidth = 0.05;
+ctx.lineJoin = "round";
+ctx.beginPath();
+ctx.moveTo(290,75);
+
+function drawLine(dx,dy,scale){
+	var t = 0,c = "#f00",a = 5,b = 3,d = 5,x = 0,y = 0;
+	setInterval(function(){
+		if(t < 10){
+			a = 2 * t;
+			b = 6 * t;
+			d = 18 * t;
+			r1 = 30;
+			r2 = 30;
+			r3 = 30;
+			x = scale * (r1 * Math.cos(a) + r2 * Math.cos(b) + r3 * Math.cos(d)) + dx;
+			y = scale * (r1 * Math.sin(a) + r2 * Math.sin(b) + r3 * Math.sin(d)) + dy;
+			ctx.lineTo(x,y);
+			ctx.moveTo(x,y);
+			t += 0.01;
+			ctx.closePath();
+			ctx.stroke();
+		}
+	},20);
+}
+drawLine(200,75,1);
+</script>
+</body>
+</html>

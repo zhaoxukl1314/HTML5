@@ -1,0 +1,22 @@
+﻿@charset "utf-8";
+/* CSS Document */
+body {
+	font-size:12px
+}
+canvas {
+	border:dashed 1px #666;
+	cursor:pointer
+}
+/* 实例5增加样式 */
+p{
+	position:absolute;
+	height:23px;
+	line-height:23px;
+	margin-left:10px
+}
+span{
+	padding:3px;
+	border:solid 1px #ccc; 
+	background-color:#eee;
+	cursor:pointer
+}

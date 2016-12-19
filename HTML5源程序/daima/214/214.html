@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>类似QQ对话框上下部分可拖动代码-例子代码</title>
+<style>
+ul,li{margin:0;padding:0;}
+body{font:14px/1.5 Arial;color:#666;}
+#box{position:relative;width:600px;height:400px;border:2px solid #000;margin:10px auto;overflow:hidden;}
+#box ul{list-style-position:inside;margin:10px;}
+#box div{position:absolute;width:100%;}
+#top,#bottom{color:#FFF;height:100%;overflow:hidden;}
+#top{background:green;}
+#bottom{background:skyblue;top:50%}
+#line{top:50%;height:4px;overflow:hidden;margin-top:-2px;background:red;cursor:n-resize;}
+</style>
+<script>
+function $(id) {
+	return document.getElementById(id)	
+}
+window.onload = function() {
+	var oBox = $("box"), oBottom = $("bottom"), oLine = $("line");
+	oLine.onmousedown = function(e) {
+		var disY = (e || event).clientY;
+		oLine.top = oLine.offsetTop;
+		document.onmousemove = function(e) {
+			var iT = oLine.top + ((e || event).clientY - disY);
+			var maxT = oBox.clientHeight - oLine.offsetHeight;
+			oLine.style.margin = 0;
+			iT < 0 && (iT = 0);
+			iT > maxT && (iT = maxT);
+			oLine.style.top = oBottom.style.top = iT + "px";
+			return false
+		};	
+		document.onmouseup = function() {
+			document.onmousemove = null;
+			document.onmouseup = null;	
+			oLine.releaseCapture && oLine.releaseCapture()
+		};
+		oLine.setCapture && oLine.setCapture();
+		return false
+	};
+};
+</script>
+</head>
+<body>
+<center>上下拖动红条改变显示区域高度</center>
+<div id="box">
+    <div id="top">
+        <ul>
+<li>jQuery初学实例代码集</li>
+<li>100多个ExtJS应用初学实例集</li>
+<li>基于jQuery的省、市、县三级级联菜单</li>
+<li>最新通用精简版</li>
+<li>FCKeditor  2.6.4.1 网页编辑器</li>
+<li>jQuery平滑图片滚动</li>
+<li>Xml+JS省市县三级联动菜单</li>
+<li>jQuery 鼠标滑过链接文字弹出层提示的效果</li>
+<li>JS可控制的图片左右滚动特效（走马灯）</li>
+</ul>
+    </div>
+    <div id="bottom">
+        <ul>
+ <li>网页上部大Banner广告特效及图片横向滚动代码</a></li>
+<li>FlexSlider网页广告、图片焦点图切换插件</a></li>
+<li>兼容IE，火狐的JavaScript图片切换</li>
+<li>jQuery仿ios无线局域网WIFI提示效果（折叠面板）</li>
+<li>TopUp js图片展示及弹出层特效代码</li>
+<li>jQuery仿Apple苹果手机放大镜阅读效果</a></li>
+<li>Colortip 文字title多样式提示插件</li>
+<li>网页换肤，Ajax网页风格切换代码集</li>
+<li>超强大、漂亮的蓝色网页弹出层效果</li>
+<li>jQuery 图像预览功能的代码实现</li>
+        </ul>
+    </div>
+    <div id="line"></div>
+</div>
+</body>
+</html>

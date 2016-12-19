@@ -1,0 +1,294 @@
+﻿<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>挖箱子小游戏（面向对象版）</title>
+<style type="text/css"> 
+body, p, h2 {
+	margin:0px;
+	padding:0px;
+}
+ 
+ul, li {
+	margin:0px;
+	padding:0px;
+	float:left;
+	list-style-type:none;
+}
+ 
+body {
+	font-size:12px;
+}
+ 
+.box {
+	width:712px;
+	height:400px;
+	margin:0 auto 50px auto;
+	border:1px solid #c7c7c7;
+}
+ 
+.box ul {
+	padding:10px 0 0 5px;
+}
+ 
+.box li {
+	width:35px;
+	height:35px;
+	display:inline;
+	cursor:pointer;
+	position:relative;
+	margin:10px 0 0 11px;
+	background:url(pic.jpg) no-repeat 0 -35px;
+}
+ 
+.box li span {
+	width:200px;
+	height:35px;
+	top:-38px;
+	color:#353535;
+	background:#f8f8f8;
+	border:1px solid #e0dfdb;
+	text-align:center;
+	line-height:35px;
+	position:absolute;
+	margin:0 0 0 -90px;
+	display:none;
+}
+ 
+.box li.fail {
+	background:url(pic.jpg) no-repeat 0 -70px;
+}
+ 
+.box li.succeed {
+	background:url(201108/pic.jpg) no-repeat 0 0;
+}
+ 
+.title {
+	width:712px;
+	height:50px;
+	font-size:24px;
+	text-align:center;
+	line-height:50px;
+	font-weight:bold;
+	font-family:"微软雅黑";
+	margin:30px auto;
+}
+</style>
+<script type="text/javascript">
+//获取id
+function $(id){
+	return typeof id === "string" ? document.getElementById(id) : id;
+}
+
+//获取tagName
+function $$(oParent, elem){
+	return (oParent || document).getElementsByTagName(elem);
+}
+
+//初始化对象
+function Game(){
+	this.initialize.apply(this, arguments);
+}
+
+Game.prototype = {
+	initialize : function(obj){
+		if($(obj)){
+			this.obj = $(obj);
+			this.oUl = $$(this.obj, 'ul')[0];
+			this.aLi = this.oUl.children;
+			this.aSpan = $$(this.obj, 'span');
+			this.iData = [];
+			this.iSucc = [];
+			this.aTitle = [
+				'电影票两张:)',
+				'AC米兰门票两张:)',
+				'小肥羊火锅双人套餐:)',
+				'音乐会门票两张:)',
+				'adidas代金卷100块:)',
+				'世界公园门票一张:)', 
+				'水立方门票一张:)'
+			];
+			this.iNow = this.iPiece = 0;
+			var _this = this;
+			var i = 0;
+			this.iSort()
+			for(i=0;i<this.aLi.length;i++){
+				this.aLi[i].index = i;
+				this.aLi[i].innerHTML = '<span>很遗憾，没挖到礼品:(</span>'
+				this.aLi[i].onclick = function(){
+					_this.fnClick(this);
+				};
+			}
+		}
+	},
+	iSort : function(){
+		var i = 0;
+		for(i=0;i<this.aLi.length;i++)this.iData.push(i+1);
+		this.iData.sort(function(){return Math.random() > 0.5 ? -1 : 1;});
+		this.aTitle.sort(function(){return Math.random() > 0.5 ? -1 : 1;});
+		for(i=0;i<this.aTitle.length;i++)this.iSucc.push(this.iData[i]);
+	},
+	fnClick : function(oBut){
+		var i = 0;
+		var _this = this;
+		var iBout = this.iNow;
+		this.iNow++
+		if(this.aLi[oBut.index].className != '')this.iNow = iBout;
+		this.aLi[oBut.index].className = 'fail';
+		for(i=0;i<this.iSucc.length;i++){
+			if((this.iSucc[i]-1) == oBut.index){
+				this.iPiece++;
+				this.aSpan[oBut.index].innerHTML = '恭喜你，挖到'+this.aTitle[i];
+				this.aLi[oBut.index].className = 'succeed';
+			}
+		}
+		for(i=0;i<this.aSpan.length;i++){
+			this.aLi[i].onmouseout = function(){
+				_this.aSpan[oBut.index].style.display = 'none';
+			};
+		}
+		this.aSpan[oBut.index].style.display = 'block';
+		if(this.iNow == this.aTitle.length){
+			this.iPiece == 0 ? alert('很遗憾你什么也没有挖到，点击确定从新试试手气~！') : alert('恭喜你挖到'+this.iPiece+'礼物，点击确定从新试试手气~！');
+			this.iNow = this.iPiece = 0;
+			this.iSucc.splice(0, this.aLi.length);
+			this.iSort();
+			for(i=0;i<this.aLi.length;i++)this.aLi[i].className = '';
+		}
+	}
+};
+</script>
+<script type="text/javascript"> 
+window.onload = function(){
+	new Game("box");
+};
+</script>
+</head>
+ 
+<body>
+<div class="title">挖箱子小游戏，每回7次机会</div>
+<div class="box" id="box">
+	<ul>
+    	<li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+</body>
+</html>

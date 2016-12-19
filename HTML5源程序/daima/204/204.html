@@ -1,0 +1,79 @@
+﻿<!DOCTYPE HTML>
+<head>
+<title>CSS美化的漂亮搜索框</title>
+<meta http-equiv="content-type" content="text/html;charset=gb2312">
+<style type="text/css">
+<!--
+.search{
+	padding-right:10px;
+	padding-left:10px;
+	padding-top:5px;
+	padding-bottom:5px;
+	width: 280px;
+	background:#1A93CC;
+	float:left;
+	position:relative;
+}
+.search .input{
+	padding-top:2px;
+	height:16px;
+	width: 180px;
+	border: 1px solid #0086C6;
+	font-size:14px;
+	background:#fff url(/jscss/demoimg/200908/search_btn.gif) no-repeat right 0;
+}
+.label{
+	color:#ccc;
+	position:absolute;
+	left:12px;top:6px;
+	display:block;
+	height:22px;
+	line-height:22px;
+	font-size:12px;
+}
+span.submit{
+	cursor:pointer;
+	position:absolute;
+	left:171px;
+	top:6px;
+	width:20px;
+	height:20px;
+	text-indent:-999em;
+}
+-->
+</style>
+</head>
+<body>
+<div class="search">
+  <form action="" method="post" name="search" id="search">
+    <input name="keyword" type="text" class="input" id="keyword" value="" style="float:left;">
+    <label for="keyword" id="for-keyword" class="label">我要搜索</label>
+    <span class="submit" onclick="return formSubmit('frmsearch');">搜索</span>
+  </form>
+</div>
+<script type="text/javascript">
+var $ = function(id){return document.getElementById(id);}
+var formSubmit = function(id){
+	document.forms[id].submit();
+	return false;
+}
+var tip = function(q, for_q){
+	q = $(q);
+	for_q = $(for_q);
+	q.onfocus = function(){
+		for_q.style.display = 'none';
+		q.style.backgroundPosition = "right -17px";
+	}
+	q.onblur = function(){
+		if(!this.value) for_q.style.display = 'block';
+		q.style.backgroundPosition = "right 0";
+	}
+	for_q.onclick = function(){
+		this.style.display = 'none';
+		q.focus();
+	}
+};
+tip('keyword','for-keyword');
+</script>
+</body>
+</html>

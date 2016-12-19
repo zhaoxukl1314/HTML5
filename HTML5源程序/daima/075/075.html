@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>拖放上传文件</title>
+<link href="css.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="jscript" 
+        src="js075.js"/>
+</script>
+</head>
+<body onload="init()">
+<form id="form1" method="post" enctype="multipart/form-data" action="javascript: uploadAndSubmit();"> 
+<h1>文件预览并上传</h1>
+<div id="main">
+<div id="show">
+文件预览区
+</div>
+</div>
+<input type="submit" value="上传" id="saveButton"  disabled="disabled"/>
+<div id="successLabel" />
+</form>
+
+</body>
+
+</html>

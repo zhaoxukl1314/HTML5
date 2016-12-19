@@ -1,0 +1,44 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	font-size:12px
+}
+.inputbtn {
+	border:solid 1px #ccc;
+	background-color:#eee;
+	line-height:18px;
+	font-size:12px
+}
+.inputtxt {
+	border:solid 1px #ccc;
+	line-height:18px;
+	font-size:12px
+}
+.divShow {
+	border:solid 1px #666;
+	background-color:#eee;
+	margin-top:5px;
+	padding:5px;
+	width:196px;
+	display:none
+}
+h5 {
+	padding:0px;
+	margin:0px
+}
+ol li {
+	padding-top:5px
+}
+.p3_5,.p3_7,.p3_8{
+    border:solid 1px #ccc; 
+	background-color:#eee;
+	padding:8px;
+	width:380px;
+	margin-top:5px;
+}
+.p3_10{
+	padding:8px;
+	width:260px;
+	margin-top:5px;
+	margin-bottom:5px;
+}

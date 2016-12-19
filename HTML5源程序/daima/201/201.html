@@ -1,0 +1,102 @@
+﻿<!DOCTYPE HTML>
+<html>	
+<head> 
+<meta charset="utf-8">
+<title>jquery星级评论打分组件</title> 
+<script src="http://www.codefans.net/ajaxjs/jquery-1.6.2.min.js"></script>
+<style>
+html,body,div,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,address,img,ins,del,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0}
+body,button,input,select,textarea{font:12px/1.6 Arial,Tahoma,simsun;color:#333}
+button,input,select,textarea{margin:0;outline:0}
+textarea{resize:none}
+h1,h2,h3,h4,h5,h6{font-size:100%}
+address,cite,dfn,em,var,i{font-style:normal}
+blockquote:before,blockquote:after,q:before,q:after{content:''}
+table{border-spacing:0;border-collapse:collapse}
+li{list-style:none}
+section,article,aside,header,footer,nav,dialog,figure{display:block}/*html5*/
+pre{word-wrap:break-word;font-family:Arial;zoom:1;white-space:pre-wrap}
+/*public*/
+a{text-decoration:none;color:#36c}
+a:hover{text-decoration:underline;color:#FF7000}
+.clear{clear:both;height:0;overflow:hidden}
+.clearfix:after{content:"";display:block;height:0;clear:both;visibility:hidden}
+.clearfix{zoom:1}
+label input{vertical-align:-2px;*vertical-align:0}
+.fl{float:left}
+.fr{float:right}
+.page_all{width:980px;margin:0 auto}
+.gray3{color:#333}/*text*/
+.gray6{color:#666}
+.gray7{color:#7e7e7e}
+.gray9{color:#999}
+.orange,.sublink .orange{color:#ff7000}
+.green{color:#65C202}
+.sublink a{color:#3C5891}
+.m5{margin:5px}/*margin*/
+.mt5{margin-top:5px}
+.mr5{margin-right:5px}
+.mb5{margin-bottom:5px}
+.ml5{margin-left:5px}
+.m10{margin:10px}
+.mt10{margin-top:10px}
+.mr10{margin-right:10px}
+.mb10{margin-bottom:10px}
+.ml10{margin-left:10px}
+.lh24{line-height:24px}
+</style>
+<script> 
+var pRate = function(box,callBack){
+	this.Index = null;
+	var B = $("#"+box),
+		rate = B.children("i"),
+		w = rate.width(),
+		n = rate.length,
+		me = this;
+	for(var i=0;i<n;i++){
+		rate.eq(i).css({
+			'width':w*(i+1),
+			'z-index':n-i
+		});
+	}	
+	rate.hover(function(){
+		var S = B.children("i.select");
+		$(this).addClass("hover").siblings().removeClass("hover");
+		if($(this).index()>S.index()){
+			S.addClass("hover");
+		}
+	},function(){
+		rate.removeClass("hover");
+	})
+	rate.click(function(){
+		rate.removeClass("select hover");
+		$(this).addClass("select");
+		me.Index = $(this).index() + 1;
+		if(callBack){callBack();}
+	})
+}
+</script>
+<style type="text/css"> 
+h1{font:26px/3 'microsoft yahei','simhei';color:#000;text-indent:2em;text-shadow:1px 1px 2px #ccc}	
+.p_rate{height:14px;position:relative;width:80px;overflow:hidden;display:inline-block;background:url(http://www.codefans.net/jscss/demoimg/201112/rate.png) repeat-x;margin:40px 100px}
+.p_rate i{position:absolute;top:0;left:0;cursor:pointer;height:14px;width:16px;background:url(http://www.www.codefans.net/jscss/demoimg/201112/rate.png) repeat-x 0 -500px}
+.p_rate .select{background-position:0 -32px}
+.p_rate .hover{background-position:0 -16px}
+</style>
+</head> 
+<body>
+<h1>jquery星级评论打分组件</h1>	
+ <span class="p_rate" id="p_rate">
+ <i title="1分"></i> 
+ <i title="2分"></i> 
+ <i title="3分"></i> 
+ <i title="4分"></i> 
+ <i title="5分"></i> 
+</span>
+<script> 
+var Rate = new pRate("p_rate",function(){
+	alert(Rate.Index+'分')
+});
+</script>
+</body> 
+</html> 

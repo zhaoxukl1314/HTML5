@@ -1,0 +1,64 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>使用progress元素</title>
+<style type="text/css">
+body {
+	font-size:12px
+}
+p {
+	padding:0px;
+	margin:0px
+}
+.inputbtn {
+	border:solid 1px #ccc;
+	background-color:#eee;
+	line-height:18px;
+	font-size:12px
+}
+progress {
+    border-radius: 2px;
+    border-left: 1px #ccc solid;
+    border-right: 1px #ccc solid;
+    border-top: 1px #aaa solid;
+    background-color: #eee;
+}
+  
+progress::-webkit-progress-bar {
+    background-color: #d7d7d7;
+}
+  
+progress::-webkit-progress-value {
+    background-color: #aadd6a;
+}
+
+</style>
+</head>
+<body>
+ <p id="pTip">开始下载</p>
+ <progress value="0" max="100" id="proDownFile"></progress>
+ <input type="button" value="下载按钮" 
+        class="inputbtn" onClick="Btn_Click();">
+<script type="text/javascript">
+  var intValue = 0;
+  var intTimer;
+  var objPro = document.getElementById('proDownFile');
+  var objTip = document.getElementById('pTip');
+  //定时事件
+  function Interval_handler() {
+    intValue++;
+    objPro.value = intValue;
+    if (intValue >= objPro.max) {
+        clearInterval(intTimer);
+        objTip.innerHTML = "恭喜你，下载已经完成！";
+    } else {
+        objTip.innerHTML = "请耐心等待，正在下载中" + intValue + "%";
+    }
+  }
+  //下载按钮点击事件
+  function Btn_Click(){
+	 intTimer = setInterval(Interval_handler, 100);
+  }    
+</script>
+</body>
+</html>

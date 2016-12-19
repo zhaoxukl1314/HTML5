@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>   
+<html manifest="book.manifest">
+<head>   
+<meta charset="UTF-8">  
+<title>离线的、日记式事物提醒系统</title>
+<style>
+div{        
+    -webkit-border-image: url(日历背景.png) 10;
+    -moz-border-image: url(123.png) 10;
+    width:300px;
+    height:300px;
+    padding:35px;
+    background:#eee;
+    font-weight:bold;
+}
+li{
+    list-style:none;
+}
+</style>
+<script type="text/javascript" src="js151.js"></script>
+</head>  
+<body onload="window_onload()">  
+<h1>离线的、日记式事物提醒系统</h1>  
+选择日期：<input id="date1" type="date" onchange="date_onchange()"><input type="button" value="保存" onclick="save()"/><br/>
+<div>
+本日日期：<span id="today"></span><br/>
+本日要事：<br/>
+<ul  contentEditable="true">
+<li id="li1">(没有记录）</li>
+<li id="li2">(没有记录）</li>
+<li id="li3">(没有记录）</li>
+</ul>
+</div> 
+</body> 
+</html>

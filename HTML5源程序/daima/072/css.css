@@ -1,0 +1,77 @@
+﻿@charset "utf-8";
+/* CSS Document */
+body {
+	font-size:12px
+}
+.inputbtn {
+	border:solid 1px #ccc;
+	background-color:#eee;
+	line-height:18px;
+	font-size:12px
+}
+.inputtxt {
+	border:solid 1px #ccc;
+	padding:3px;
+	line-height:18px;
+	font-size:12px;
+	width:160px
+}
+fieldset{
+	padding:10px;
+	width:285px;
+	float:left
+}
+/* 实例3增加样式 */
+ul{ 
+    list-style-type:none;
+    padding:0px; 
+	margin:10px 0px 0px 0px;
+	width:290px
+}
+ul li{
+	border-bottom:dashed #ccc 1px;
+	padding-top:5px;
+	padding-bottom:5px;
+	clear:both;
+	float:left
+}
+ul li span{
+	float:left;
+	width:92px;
+	padding-left:3px
+}
+/* 实例6增加样式 */
+ul li span img{
+    padding:2px; 
+	margin-right:5px;
+	border:solid 1px #ccc
+}
+.li{
+	font-weight:bold;
+    background-color:#eee
+}
+/* 实例8增加样式 */
+#pStatus{
+	display:none;
+	border:1px #ccc solid; 
+	width:90px; 
+	background-color:#eee;
+	padding:6px 12px 6px 12px
+}
+/* 实例9增加样式 */
+#ulUpload{ 
+    list-style-type:none;
+    padding:0px; 
+	margin:10px 0px 0px 0px;
+	width:290px;
+	height:125px
+}
+#ulUpload span{ 
+	padding-top:5px;
+	padding-bottom:5px;
+}
+#ulUpload span img{
+    padding:2px; 
+	margin-right:5px;
+	border:solid 1px #ccc
+}

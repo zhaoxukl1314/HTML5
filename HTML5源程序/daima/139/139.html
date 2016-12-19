@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>保存并读取登录用户名与密码</title>
+<link href="css.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="jscript" 
+        src="js139.js"/>
+</script>
+</head>
+<body onLoad="pageload();">
+   <form id="frmLogin" action="#">
+    <fieldset>
+       <legend>登录</legend>
+       <ul>
+           <li class="li_top">
+               <span id="spnStatus"></span>
+           </li>
+           <li>名称：
+               <input id="txtName" class="inputtxt" 
+                      type="text">
+           </li> 
+           <li>密码：
+               <input id="txtPass" class="inputtxt" 
+                      type="password">
+           </li> 
+           <li>
+               <input id="chkSave" type="checkbox">
+               保存密码?
+           </li>
+           <li class="li_bot">
+               <input name="btnLogin" class="inputbtn" value="登录"
+                      type="button" onClick="btnLogin_click();">
+               <input name="rstLogin" class="inputbtn" 
+                      type="reset" value="取消">
+           </li>
+       </ul>
+    </fieldset>
+   </form>
+</body>
+</html>

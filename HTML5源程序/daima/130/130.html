@@ -1,0 +1,53 @@
+<!DOCTYPE 	HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<title>canvas</title>		
+		<script type="text/javascript" src="1.js"></script> 
+ 
+		<!--[if IE]>
+		<script language="javascript" type="text/javascript" src="2.js">
+		</script>
+		<![endif]--> 
+
+		<script type="text/javascript" src="3.js"></script> 	
+		
+		<script type="text/javascript">
+		
+			var d1 = [[1, 1]];
+			var d2 = [[2, 2]];
+			var d3 = [[3, 1]];
+			Event.observe(window, 'load', function() {	
+
+				var canvas = document.getElementById("square");
+				var context = canvas.getContext("2d");
+				context.fillStyle = "#f00";
+				context.fillRect(0,0,10,10);
+				
+				canvas = document.getElementById("circle");
+				context = canvas.getContext("2d");
+				context.fillStyle = "#00f";
+				context.beginPath();
+				context.arc(5,5,5,0,2*Math.PI,true);
+				context.fill();
+				
+				new Proto.Chart($('piechart'), 
+						[
+						{ data: d1, label: "d1"},
+						{ data: d2, label: "d2"},
+						{ data: d3, label: "d3"}
+						], 
+						{
+							pies: {show: true, autoScale: true},
+							legend: {show: true}
+						});		
+			});
+		</script>
+	</head>
+	<body>
+		This is a red square:<canvas id="square" width="10" height="10"></canvas>.
+		This is a blue circle:<canvas id="circle" width="10" height="10"></canvas>.
+		<div id="piechart" style="width:520px;height:300px">
+		</div>
+	</body>
+</html>

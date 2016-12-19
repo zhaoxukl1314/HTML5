@@ -1,0 +1,36 @@
+    <!DOCTYPE HTML>
+    <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+            <title>HTML5每日一练之Canvas标签的应用-矩阵变换</title>
+            <script type="text/javascript">
+                    window.onload = function()
+                    {
+                            var canvas = document.getElementById("W3Cfuns_canvas");
+                            var context = canvas.getContext("2d");
+                            context.fillStyle = "#eee";
+                            context.fillRect(0, 0, 800, 600);
+                            var colors = ["#f00", "#f90", "#ff0", "#090", "#00f", "#0051a1", "#09f", "#0f0", "#0ff", "#000", "#900", "#090", "#009"];//定义颜色
+                            /*定义线宽*/
+                            context.lineWidth = 10;
+                            context.transform(1, 0, 0, 1, 100, 0);
+                            /*循环绘制圆弧*/
+                            for(var i = 0, j = colors.length; i < j; i++)
+                            {
+                                    /*定义每次向下移动10个像素的变换矩阵*/
+                                    context.transform(1, 0, 0.03, 1, 10, 10);
+                                    /*设定颜色*/
+                                    context.strokeStyle = colors;
+                                    /*绘制圆弧*/
+                                    context.beginPath();
+                                    context.arc(280, 200, 150, 0, 2, true);
+                                    context.stroke();
+                            }
+                    }
+            </script>
+        </head>
+
+        <body>
+                <canvas id="W3Cfuns_canvas" width="800" height="600"></canvas>
+        </body>
+    </html>

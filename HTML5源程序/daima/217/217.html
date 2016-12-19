@@ -1,0 +1,79 @@
+﻿<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jquery 图片幻灯片插件 用 Canvas 制作类似百叶窗拍摄快门摄影拍摄效果</title>
+<style type="text/css">
+*{margin:0;padding:0;list-style-type:none;}
+a, a:visited{text-decoration:none;outline:none;color:#97cae6;}
+body{font-size:12px;line-height:180%;color:#999;background:#333;}
+#page{width:650px;margin:0 auto;}
+#page h1{height:52px;margin:30px 0 20px 0;font-size:18px;color:#fff;}
+#container{width:640px;height:400px;margin:0 auto;border:5px solid #fff;overflow:hidden;-moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.3);-webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.3);box-shadow:0 0 10px rgba(0, 0, 0, 0.3);}
+/* shutterAnimationHolder */
+.shutterAnimationHolder .film canvas{display:block;margin:0 auto;}
+.shutterAnimationHolder .film{position:absolute;left:50%;top:0;}
+.shutterAnimationHolder{position:absolute;overflow:hidden;top:0;left:0;z-index:1000;}
+</style>
+</head>
+<body>
+
+<div id="page">
+
+	<h1>类似百叶窗拍摄 快门对开摄影拍摄效果</h1>
+
+	<div id="container">
+    	<ul>
+        	<li><img src="images/1.jpg" width="640" height="400" alt="Landscape" /></li>
+            <li><img src="images/2.jpg" width="640" height="400" alt="Yacht club" /></li>
+            <li><img src="images/3.jpg" width="640" height="400" alt="Desert" /></li>
+            <li><img src="images/4.jpg" width="640" height="400" alt="Machinery" /></li>
+        </ul>
+    </div>
+    
+
+</div>
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.shutter.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+	var container = $('#container'),
+		li = container.find('li');
+
+	// Using the tzShutter plugin. We are giving the path
+	// to he shutter.png image in the plugin folder and two
+	// callback functions.
+
+	container.tzShutter({
+		imgSrc: 'images/shutter.png',
+		closeCallback: function(){
+
+			// Cycling the visibility of the li items to
+			// create a simple slideshow.
+
+			li.filter(':visible:first').hide();
+			
+			if(li.filter(':visible').length == 0){
+				li.show();
+			}
+			
+			// Scheduling a shutter open in 0.1 seconds:
+			setTimeout(function(){container.trigger('shutterOpen')},100);
+		},
+		loadCompleteCallback:function(){
+			setInterval(function(){
+				container.trigger('shutterClose');
+			},4000);
+			
+			container.trigger('shutterClose');
+		}
+	});
+	
+});
+</script>
+
+</body>
+</html>
